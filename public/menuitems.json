@@ -1,0 +1,32 @@
+[
+    {
+      "id": 0,
+      "menuName": "Dashboard",
+      "menuRoute": "dashboard"
+    },
+    {
+      "id": 1,
+      "menuName": "About",
+      "menuRoute": "about"
+    },
+    {
+      "id": 2,
+      "menuName": "Appointment",
+      "menuRoute": "appointment"
+    },
+    {
+      "id": 3,
+      "menuName": "Reviews",
+      "menuRoute": "reviews"
+    },
+    {
+      "id": 4,
+      "menuName": "Contact Us",
+      "menuRoute": "contact-us"
+    },
+    {
+      "id": 5,
+      "menuName": "Login",
+      "menuRoute": "login"
+    }
+  ]

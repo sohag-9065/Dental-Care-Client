@@ -15,10 +15,8 @@ const RouterConfig = () => {
                 path="/"
                 element={<Home></Home>}
                 loader={async ({ request }) => {
-                    // loaders can be async functions
-                    const res = await fetch("menuitems.json", {
-                      signal: request.signal,
-                    });
+                    // load menu items
+                    const res = await fetch("menuitems.json");
                     const user = await res.json();
                     return user;
                   }}

@@ -13,7 +13,7 @@ const AppoinmentDashboard = () => {
                 <div className='text-white pr-12 pt-20'>
                     <h1 className='font-bold text-xl text-secondary mb-5'>Appoinment</h1>
                     <h2 className="text-4xl font-semibold">Make an appointment Today</h2>
-                    <p className="py-6">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsumis that it has a more-or-less normal distribution of letters,as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page.</p>
+                    <p className="py-6">Each of our specialists is backed with extensive training and professional experience from across the world. We handpick our team through a detailed selection process to make sure you are always in the best hands.</p>
                     <PrimaryButton>GET STARTED</PrimaryButton>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const TestimonialsCard = ({comment}) => {
     const {img, name, location, review,} = comment;
-    console.log(comment);
+    // console.log(comment);
     return (
         
         <div className="card  bg-base-100 shadow-xl">

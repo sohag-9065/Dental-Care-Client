@@ -1,11 +1,12 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+import Main from "../Layout/Main";
 import About from "../pages/About/About/About";
-import Appointment from "../pages/Appointment/Appointment/Appointment";
+import Appointment from "../pages/Appointment/Appointment/Appointment/Appointment";
 import ContactUs from "../pages/ContactUs/ContactUs/ContactUs";
 import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
-import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login/Login";
 import Reviews from "../pages/Reviews/Reviews/Reviews";
+import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 
 
 const RouterConfig = () => {
@@ -13,7 +14,8 @@ const RouterConfig = () => {
         createRoutesFromElements([
             <Route
                 path="/"
-                element={<Home></Home>}
+                element={<Main></Main>}
+                errorElement={<ErrorPage />}
                 loader={async ({ request }) => {
                     // load menu items
                     const res = await fetch("menuitems.json");

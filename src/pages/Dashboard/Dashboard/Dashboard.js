@@ -5,6 +5,7 @@ import DashboardContact from '../DashboardContact/DashboardContact';
 import Info from '../Info/Info/Info';
 import Services from '../Services/Services/Services';
 import Testimonials from '../Testimonials/Testimonials/Testimonials';
+import Footer from '../../Shared/Footer/Footer';
 
 const Dashboard = () => {
     return (
@@ -15,6 +16,7 @@ const Dashboard = () => {
             <AppoinmentDashboard></AppoinmentDashboard>
             <Testimonials></Testimonials>
             <DashboardContact></DashboardContact>
+            <Footer></Footer>
         </div>
     );
 };

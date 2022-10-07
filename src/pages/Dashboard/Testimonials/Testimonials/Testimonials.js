@@ -38,8 +38,8 @@ const Testimonials = () => {
                     <h1 className='font-bold text-xl text-secondary mb-5'>Testimonial</h1>
                     <h2 className='text-4xl font-semibold'>What Our Patients Says</h2>
                 </div>
-                <div>
-                    <img src={quote} alt=""  classNamse='h-48'/>
+                <div >
+                    <img src={quote} alt=""  className='h-48'/>
                 </div>
             </div>
             <div className='grid  grid-cols-1 lg:grid-cols-3 gap-5 justify-items-center mt-20'>

@@ -6,23 +6,23 @@
     },
     {
       "id": 1,
-      "menuName": "About",
-      "menuRoute": "about"
-    },
-    {
-      "id": 2,
       "menuName": "Appointment",
       "menuRoute": "appointment"
     },
     {
-      "id": 3,
+      "id": 2,
       "menuName": "Reviews",
       "menuRoute": "reviews"
     },
     {
-      "id": 4,
+      "id": 3,
       "menuName": "Contact Us",
       "menuRoute": "contact-us"
+    },
+    {
+      "id": 4,
+      "menuName": "About",
+      "menuRoute": "about"
     },
     {
       "id": 5,

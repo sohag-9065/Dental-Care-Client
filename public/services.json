@@ -1,0 +1,142 @@
+[
+    {
+      "_id": 1,
+      "name": "Teeth Orthodontics",
+      "slots": [
+        {
+          "_id": 1,
+          "time": "08.00 AM - 08.30 AM"
+        },
+        {
+          "_id": 2,
+          "time": "08.30 AM - 09.00 AM"
+        },
+        {
+          "_id": 3,
+          "time": "09.00 AM - 9.30 AM"
+        },
+        {
+          "_id": 4,
+          "time":  "09.30 AM - 10.00 AM"
+        },
+        {
+          "_id": 5,
+          "time":  "10.00 AM - 10.30 AM"
+        },
+        {
+          "_id": 6,
+          "time": "10.30 AM - 11.00 AM"
+        }   
+      ]
+    },
+    {
+      "_id": 2,
+      "name": "Cosmetic Dentistry",
+      "slots": [
+         
+        {
+          "_id": 1,
+          "time": "08.30 AM - 09.00 AM"
+        },
+        {
+          "_id": 2,
+          "time": "09.00 AM - 9.30 AM"
+        },
+        {
+          "_id": 3,
+          "time":  "09.30 AM - 10.00 AM"
+        },
+        {
+          "_id": 4,
+          "time":  "10.00 AM - 10.30 AM"
+        },
+        {
+          "_id": 5,
+          "time": "10.30 AM - 11.00 AM"
+        }   
+      ]
+    },
+    {
+      "_id": 3,
+      "name": "Teeth Cleaning",
+      "slots": []
+    },
+    {
+      "_id": 4,
+      "name": "Cavity Protection",
+      "slots": [
+        {
+          "_id": 1,
+          "time": "08.00 AM - 08.30 AM"
+        },
+        {
+          "_id": 2,
+          "time": "08.30 AM - 09.00 AM"
+        },
+        {
+          "_id": 3,
+          "time": "09.00 AM - 9.30 AM"
+        },
+        {
+          "_id": 4,
+          "time":  "09.30 AM - 10.00 AM"
+        }        
+      ]
+    },
+    {
+      "_id": 5,
+      "name": "Pediatric Dental",
+      "slots": [
+        {
+          "_id": 1,
+          "time": "08.00 AM - 08.30 AM"
+        },
+        {
+          "_id": 2,
+          "time": "08.30 AM - 09.00 AM"
+        },
+        {
+          "_id": 4,
+          "time":  "09.30 AM - 10.00 AM"
+        },
+        {
+          "_id": 5,
+          "time":  "10.00 AM - 10.30 AM"
+        },
+        {
+          "_id": 6,
+          "time": "10.30 AM - 11.00 AM"
+        }   
+      ]
+    },
+    {
+      "_id": 6,
+      "name": "Oral Surgery",
+      "slots": [
+        {
+          "_id": 1,
+          "time": "08.00 AM - 08.30 AM"
+        },
+        {
+          "_id": 2,
+          "time": "08.30 AM - 09.00 AM"
+        },
+        {
+          "_id": 3,
+          "time": "09.00 AM - 9.30 AM"
+        },
+        {
+          "_id": 4,
+          "time":  "09.30 AM - 10.00 AM"
+        },
+        {
+          "_id": 5,
+          "time":  "10.00 AM - 10.30 AM"
+        },
+        {
+          "_id": 6,
+          "time": "10.30 AM - 11.00 AM"
+        }   
+      ]
+    }
+  ]

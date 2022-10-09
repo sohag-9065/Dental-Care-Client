@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import MenuItems from './MenuItems';
 
-const Header = ({ navItems }) => {
-    const [menuItems, setMenuItems] = useState([]);
-
-    useEffect(() => {
-        setMenuItems(navItems);
-    }, [navItems]);
-
+const Header = ( ) => {
+    const navItems = useLoaderData();
 
     return (
         <div className="navbar justify-between bg-base-100 w-11/12 mx-auto">
@@ -20,7 +15,7 @@ const Header = ({ navItems }) => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
 
                         {
-                            menuItems.map(menu => <MenuItems
+                            navItems.map(menu => <MenuItems
                                 key={menu.id}
                                 menu={menu}
                             ></MenuItems>)
@@ -33,7 +28,7 @@ const Header = ({ navItems }) => {
             <div className="hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     {
-                        menuItems.map(menu => <MenuItems
+                        navItems.map(menu => <MenuItems
                             key={menu.id}
                             menu={menu}
                         ></MenuItems>)

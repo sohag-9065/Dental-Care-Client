@@ -16,17 +16,16 @@ const RouterConfig = () => {
                 path="/"
                 element={<Main></Main>}
                 errorElement={<ErrorPage />}
-                loader={async ({ request }) => {
-                    // load menu items
-                    const res = await fetch("menuitems.json");
-                    const user = await res.json();
-                    return user;
-                  }}
+                loader={async () => await fetch("menuitems.json")}
             >
                 <Route path="/" element={<Dashboard></Dashboard>}></Route>
                 <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
                 <Route path="/about" element={<About></About>}></Route>
-                <Route path="/appointment" element={<Appointment></Appointment>}></Route>
+                <Route
+                    path="/appointment"
+                    element={<Appointment></Appointment>}
+                    loader={async () => await fetch("services.json")}
+                ></Route>
                 <Route path="/reviews" element={<Reviews></Reviews>}></Route>
                 <Route path="/contact-us" element={<ContactUs></ContactUs>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>

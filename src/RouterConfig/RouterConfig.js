@@ -24,7 +24,7 @@ const RouterConfig = () => {
                 <Route
                     path="/appointment"
                     element={<Appointment></Appointment>}
-                    loader={async () => await fetch("services.json")}
+                    loader={async () => await fetch("http://localhost:5000/services")}
                 ></Route>
                 <Route path="/reviews" element={<Reviews></Reviews>}></Route>
                 <Route path="/contact-us" element={<ContactUs></ContactUs>}></Route>

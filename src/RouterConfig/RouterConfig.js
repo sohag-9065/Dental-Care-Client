@@ -5,6 +5,7 @@ import Appointment from "../pages/Appointment/Appointment/Appointment/Appointmen
 import ContactUs from "../pages/ContactUs/ContactUs/ContactUs";
 import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
 import Login from "../pages/Login/Login/Login";
+import Register from "../pages/Login/Register/Register";
 import Reviews from "../pages/Reviews/Reviews/Reviews";
 import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 
@@ -29,6 +30,7 @@ const RouterConfig = () => {
                 <Route path="/reviews" element={<Reviews></Reviews>}></Route>
                 <Route path="/contact-us" element={<ContactUs></ContactUs>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
+                <Route path="/register" element={<Register></Register>}></Route>
             </Route>
 
         ]

@@ -1,10 +1,12 @@
-import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import React from 'react';  
+import { Link, useLoaderData } from 'react-router-dom';  
 import MenuItems from './MenuItems';
 
 const Header = ( ) => {
+    
     const navItems = useLoaderData();
 
+    
     return (
         <div className="navbar justify-between bg-base-100 w-11/12 mx-auto">
             <div className="">

@@ -19,7 +19,7 @@ const MenuItems = ({ menu }) => {
                             onClick={logout}
                             to="/dashboard"
                             className={({ isActive }) =>
-                                isActive ? "bg-[#3A4256] text-white" : undefined
+                                isActive ? undefined : undefined
                             }>
                             Sign Out
                         </NavLink>

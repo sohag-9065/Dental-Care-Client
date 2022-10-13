@@ -16,14 +16,6 @@ const Appointment = () => {
                 date={date}
             ></AvailableAppointments>
 
-
-
-
-
-
-
-
-
             <Footer></Footer>
         </div>
     );

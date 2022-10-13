@@ -6,6 +6,7 @@ import ContactUs from "../pages/ContactUs/ContactUs/ContactUs";
 import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
+import RequireAuth from "../pages/Login/RequireAuth/RequireAuth";
 import Reviews from "../pages/Reviews/Reviews/Reviews";
 import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 
@@ -23,10 +24,14 @@ const RouterConfig = () => {
                 <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
                 <Route path="/about" element={<About></About>}></Route>
                 <Route
-                    path="/appointment"
-                    element={<Appointment></Appointment>}
-                    loader={async () => await fetch("http://localhost:5000/services")}
-                ></Route>
+                    path="/protect"
+                    element={
+                        <RequireAuth>
+                            <Appointment></Appointment>
+                        </RequireAuth>
+                    }
+                >
+                </Route>
                 <Route path="/reviews" element={<Reviews></Reviews>}></Route>
                 <Route path="/contact-us" element={<ContactUs></ContactUs>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>

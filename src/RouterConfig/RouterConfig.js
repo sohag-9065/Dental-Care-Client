@@ -6,9 +6,15 @@ import ContactUs from "../pages/ContactUs/ContactUs/ContactUs";
 import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
+import RequireAdmin from "../pages/Login/RequireAdmin/RequireAdmin";
 import RequireAuth from "../pages/Login/RequireAuth/RequireAuth";
 import Reviews from "../pages/Reviews/Reviews/Reviews";
 import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
+import MyAppoinments from "../pages/ShowAppoinment/MyAppoinments";
+import MyHistory from "../pages/ShowAppoinment/MyHistory";
+import MyReview from "../pages/ShowAppoinment/MyReview";
+import ShowAppoinment from "../pages/ShowAppoinment/ShowAppoinment";
+import Users from "../pages/ShowAppoinment/Users";
 
 
 const RouterConfig = () => {
@@ -18,13 +24,11 @@ const RouterConfig = () => {
                 path="/"
                 element={<Main></Main>}
                 errorElement={<ErrorPage />}
-                loader={async () => await fetch("menuitems.json")}
             >
                 <Route path="/" element={<Dashboard></Dashboard>}></Route>
                 <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
-                <Route path="/about" element={<About></About>}></Route>
                 <Route
-                    path="/protect"
+                    path="/appointment"
                     element={
                         <RequireAuth>
                             <Appointment></Appointment>
@@ -32,8 +36,30 @@ const RouterConfig = () => {
                     }
                 >
                 </Route>
+                <Route path="/about" element={<About></About>}></Route>
                 <Route path="/reviews" element={<Reviews></Reviews>}></Route>
                 <Route path="/contact-us" element={<ContactUs></ContactUs>}></Route>
+                <Route
+                    path="/showappoinment"
+                    element={
+                        <RequireAuth>
+                            <ShowAppoinment></ShowAppoinment>
+                        </RequireAuth>
+                    }
+                >
+                    <Route index element={<MyAppoinments></MyAppoinments>}></Route>
+                    <Route path="/showappoinment/myreviews" element={<MyReview></MyReview>}></Route>
+                    <Route path="/showappoinment/history" element={<MyHistory></MyHistory>}></Route>
+                    <Route
+                        path="/showappoinment/users"
+                        element={
+                            <RequireAdmin >
+                                <Users></Users>
+                            </RequireAdmin>}
+                    >
+                    </Route>
+                </Route>
+                
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
             </Route>

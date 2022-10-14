@@ -9,6 +9,7 @@ const MenuItems = ({ menu }) => {
     const [user] = useAuthState(auth);
     const logout = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken');
     };
     return (
         <div>

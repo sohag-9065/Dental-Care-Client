@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
     const [
@@ -14,13 +15,20 @@ const Register = () => {
         error
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    const [updateProfile ] = useUpdateProfile(auth);
+    const [updateProfile] = useUpdateProfile(auth);
 
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [token] = useToken(user);
 
     const navigate = useNavigate();
 
     let signInErrorMesseage;
+
+    useEffect(() => {
+        if (token) {
+            navigate('/dashboard')
+        }
+    }, [token, navigate]);
 
     if (loading) {
         return <Loading></Loading>
@@ -30,15 +38,13 @@ const Register = () => {
         signInErrorMesseage = <p>Error: {error.message}</p>;
     }
 
-    if (user) {
-        navigate('/dashboard')
-    }
+    
 
     const onSubmit = async data => {
         const { email, password, name } = data;
         await createUserWithEmailAndPassword(email, password);
-        await updateProfile({ displayName : name });
-        console.log( " update done", data);
+        await updateProfile({ displayName: name });
+        // console.log(" update done", data);
     };
 
     return (
@@ -70,6 +76,7 @@ const Register = () => {
                             </label>
                             <input
                                 type="email"
+
                                 className="input input-bordered mb-1 "
                                 placeholder='Email'
                                 {...register("email",
@@ -89,26 +96,29 @@ const Register = () => {
                             {errors.email?.type === 'required' && <p role="alert">{errors.email?.message}</p>}
                             {errors.email?.type === 'pattern' && <p role="alert">{errors.email?.message}</p>}
 
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input
-                                type="password"
-                                className="input input-bordered mb-1"
-                                placeholder='Password'
-                                {...register("password", {
-                                    required: "Password is required",
-                                    minLength: {
-                                        value: 6,
-                                        message: "Must be 6 charecters or longer",
+                            
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input
+                                    type="password"
+                                    autoComplete='username'
+                                    className="input input-bordered mb-1"
+                                    placeholder='Password'
+                                    {...register("password", {
+                                        required: "Password is required",
+                                        minLength: {
+                                            value: 6,
+                                            message: "Must be 6 charecters or longer",
+                                        }
                                     }
-                                }
-                                )}
+                                    )}
 
 
-                            />
-                            {errors.password?.type === 'required' && <p role="alert">{errors.password?.message}</p>}
-                            {errors.password?.type === 'minLength' && <p role="alert">{errors.password?.message}</p>}
+                                />
+                                {errors.password?.type === 'required' && <p role="alert">{errors.password?.message}</p>}
+                                {errors.password?.type === 'minLength' && <p role="alert">{errors.password?.message}</p>}
+                             
                             {signInErrorMesseage}
                             <input type="submit" className='btn mt-6' value="Sign Up" />
                         </form>

@@ -4,7 +4,7 @@ import auth from '../../../../firebase.init';
 import { toast } from 'react-toastify';
 
 
-const ModalBooking = ({ _id, name, slottTime, serviceDate, setOpenModal }) => {
+const ModalBooking = ({ _id, name, slottTime, serviceDate, setOpenModal , refetch}) => {
     const [user] = useAuthState(auth);
     // console.log(user );
 
@@ -35,6 +35,7 @@ const ModalBooking = ({ _id, name, slottTime, serviceDate, setOpenModal }) => {
                     toast.success("Success Appoinment !", {
                         position: toast.POSITION.TOP_CENTER
                     });
+                    refetch();
                     setOpenModal(false);
                 }
                 else {
@@ -45,6 +46,7 @@ const ModalBooking = ({ _id, name, slottTime, serviceDate, setOpenModal }) => {
                 console.log(data);
 
             })
+            
             event.target.reset();
         //  console.log("Booking Done");
         // console.log(booking);

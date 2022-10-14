@@ -1,28 +1,30 @@
 import { format } from 'date-fns';
-import React, { useEffect, useState } from 'react'; 
+import React, { useEffect, useState } from 'react';
 import ServicesAvailable from '../ServicesAvailable/ServicesAvailable';
+import { useQuery } from 'react-query'
+import Loading from '../../../Shared/Loading/Loading';
 
 const AvailableAppointments = ({ date }) => {
     const [serviceName, setServiceName] = useState("Teeth Orthodontics");
     const [serviceInfo, setServiceInfo] = useState({});
-    const [services, setServices] = useState([]);
 
-    const selectDate =  format(date, 'PPP') ;
-     
-    useEffect( ()=>{
-        console.log(selectDate);
-         fetch(`http://localhost:5000/available?date=${selectDate}`)
-         .then(res => res.json())
-         .then(data => setServices(data))
-    },[selectDate])
+    const selectDate = format(date, 'PPP');
+
+    const { data: services, isLoading , refetch } = useQuery(['available', selectDate], () =>
+        fetch(`http://localhost:5000/available?date=${selectDate}`)
+            .then(res => res.json())
+    )
 
     useEffect(() => {
         const selectNewServiceInfo = services?.find(service => service.name === "Teeth Orthodontics");
-        // console.log(selectNewServiceInfo);
-        if(selectNewServiceInfo){
+        if (selectNewServiceInfo) {
             setServiceInfo(selectNewServiceInfo);
         }
     }, [services, date]);
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     const handleService = name => {
         setServiceName(name);
@@ -33,7 +35,7 @@ const AvailableAppointments = ({ date }) => {
     return (
         <div className='mx-12 mb-40 text-center'>
             <h1 className='text-2xl text-secondary   mt-20'>Available Services on {selectDate}</h1>
-            <p className='text-2xl     mt-3'>Please select a service. Total Service: {services.length}</p>
+            <p className='text-2xl     mt-3'>Please select a service. Total Service: {services?.length}</p>
             <div className='grid grid-cols-3 mt-14 gap-7 text-secondary cursor-pointer'>
                 {
                     services?.map(service => <div
@@ -50,14 +52,15 @@ const AvailableAppointments = ({ date }) => {
 
             <h1 className='text-2xl text-secondary   my-20'>Available {serviceInfo?.slots?.length} slots for {serviceName} </h1>
             {
-                Object.keys(serviceInfo)?.length  && (
+                Object.keys(serviceInfo)?.length && (
                     <ServicesAvailable
                         serviceInfo={serviceInfo}
                         serviceDate={selectDate}
+                        refetch={refetch}
                     ></ServicesAvailable>
                 )
             }
-        </div> 
+        </div>
     );
 };
 

@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
@@ -17,26 +18,27 @@ const Login = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const [token] = useToken(user);
 
     let from = location.state?.from?.pathname || "/";
 
-    useEffect(()=>{
-        if (user) {
-            navigate(from, { replace : true });
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
         }
-    },[user, from, navigate]);
+    }, [token, from, navigate]);
 
     let signInErrorMesseage;
 
-    if(loading){
+    if (loading) {
         return <Loading></Loading>
     }
 
     if (error) {
-        signInErrorMesseage = <p>Error: {error.message}</p> ;
+        signInErrorMesseage = <p>Error: {error.message}</p>;
     }
 
-    
+
 
     const onSubmit = data => {
         const { email, password } = data;
@@ -52,9 +54,10 @@ const Login = () => {
                 <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl ">
                     <div className="card-body w-96 text-center">
                         <p className=' font-semibold text-xl mb-4'>Login</p>
-                         
+
                         {/* React hook form  */}
                         <form onSubmit={handleSubmit(onSubmit)} className="form-control">
+
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
@@ -79,28 +82,37 @@ const Login = () => {
                             {errors.email?.type === 'required' && <p role="alert">{errors.email?.message}</p>}
                             {errors.email?.type === 'pattern' && <p role="alert">{errors.email?.message}</p>}
 
+
+
+
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input
-                                type="password"
-                                className="input input-bordered mb-1"
-                                placeholder='Password'
-                                {...register("password", {
-                                    required: "Password is required",
-                                    minLength: {
-                                        value: 6,
-                                        message: "Must be 6 charecters or longer",
+                            {/* <div> */}
+                                <input
+                                     
+                                    type="password"
+                                    autoComplete='username'
+                                    className="input input-bordered mb-1"
+                                    placeholder='Password'
+                                    {...register("password", {
+                                        required: "Password is required",
+                                        minLength: {
+                                            value: 6,
+                                            message: "Must be 6 charecters or longer",
+                                        }
                                     }
-                                }
-                                )}
-                            />
+                                    )}
+                                />
+                            {/* </div> */}
                             {errors.password?.type === 'required' && <p role="alert">{errors.password?.message}</p>}
                             {errors.password?.type === 'minLength' && <p role="alert">{errors.password?.message}</p>}
-                            { signInErrorMesseage }
+
+
+                            {signInErrorMesseage}
                             <input type="submit" className='btn mt-6' value="Login" />
                         </form>
-                       
+
                         <p className='text-xs'>New to Doctors Portal? <Link to="../register" className=' text-secondary cursor-pointer'>Create new account</Link></p>
 
                         <SocialLogin></SocialLogin>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import ModalBooking from '../ModalBooking/ModalBooking';
 
-const ServicesAvailable = ({ serviceInfo, serviceDate }) => {
+const ServicesAvailable = ({ serviceInfo, serviceDate, refetch }) => {
     const { _id, slots, name } = serviceInfo;
-    // const [seclectTime, setSelectTime] = useState("");
     const [slottTime, setSlotTime] = useState("");
     const [openModal, setOpenModal] = useState(false);
 
@@ -18,7 +17,6 @@ const ServicesAvailable = ({ serviceInfo, serviceDate }) => {
         // setSelectTime(time);
     }
 
-    // console.log(seclectTime);
     return (
         <div className='grid grid-cols-3  gap-7 '>
             {
@@ -52,6 +50,7 @@ const ServicesAvailable = ({ serviceInfo, serviceDate }) => {
                     slottTime={slottTime}
                     serviceDate={serviceDate}
                     setOpenModal={setOpenModal}
+                    refetch={refetch}
                 ></ModalBooking>
             }
 

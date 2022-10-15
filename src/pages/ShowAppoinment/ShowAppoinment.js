@@ -17,7 +17,7 @@ const ShowAppoinment = () => {
         <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content  ">
-                <h2 className='text-3xl text-orange-300'>ShowAppoinment</h2>
+                <h2 className='text-3xl text-orange-300'>Show Appoinment</h2>
                 <Outlet></Outlet>
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
@@ -29,7 +29,11 @@ const ShowAppoinment = () => {
                     <li><Link to="/showappoinment">My Appoinments</Link></li>
                     <li><Link to="/showappoinment/myreviews">My Review</Link></li>
                     <li><Link to="/showappoinment/history">My History</Link></li>
-                    {admin && <li><Link to="/showappoinment/users">All Users</Link></li>}
+                    {admin && <>
+                        <li><Link to="/showappoinment/users">All Users</Link></li>
+                        <li><Link to="/showappoinment/add-doctor">Add a Doctor</Link></li>
+                        <li><Link to="/showappoinment/manage-doctors">Manage Doctors</Link></li>
+                    </>}
                 </ul>
 
             </div>

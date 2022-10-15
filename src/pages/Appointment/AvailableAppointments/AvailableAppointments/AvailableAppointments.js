@@ -11,7 +11,7 @@ const AvailableAppointments = ({ date }) => {
     const selectDate = format(date, 'PPP');
 
     const { data: services, isLoading , refetch } = useQuery(['available', selectDate], () =>
-        fetch(`http://localhost:5000/available?date=${selectDate}`)
+        fetch(`https://evening-cove-89940.herokuapp.com/available?date=${selectDate}`)
             .then(res => res.json())
     )
 

@@ -22,7 +22,7 @@ const ModalBooking = ({ _id, name, slottTime, serviceDate, setOpenModal , refetc
 
         }
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://evening-cove-89940.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': "application/json"

@@ -10,6 +10,8 @@ import RequireAdmin from "../pages/Login/RequireAdmin/RequireAdmin";
 import RequireAuth from "../pages/Login/RequireAuth/RequireAuth";
 import Reviews from "../pages/Reviews/Reviews/Reviews";
 import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
+import AddDoctor from "../pages/ShowAppoinment/AddDoctor";
+import ManageDoctors from "../pages/ShowAppoinment/ManageDoctors";
 import MyAppoinments from "../pages/ShowAppoinment/MyAppoinments";
 import MyHistory from "../pages/ShowAppoinment/MyHistory";
 import MyReview from "../pages/ShowAppoinment/MyReview";
@@ -23,8 +25,8 @@ const RouterConfig = () => {
             <Route
                 path="/"
                 element={<Main></Main>}
-                errorElement={<ErrorPage />}
-            >
+                errorElement={<ErrorPage />
+                }>
                 <Route path="/" element={<Dashboard></Dashboard>}></Route>
                 <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
                 <Route
@@ -33,8 +35,7 @@ const RouterConfig = () => {
                         <RequireAuth>
                             <Appointment></Appointment>
                         </RequireAuth>
-                    }
-                >
+                    }>
                 </Route>
                 <Route path="/about" element={<About></About>}></Route>
                 <Route path="/reviews" element={<Reviews></Reviews>}></Route>
@@ -45,8 +46,7 @@ const RouterConfig = () => {
                         <RequireAuth>
                             <ShowAppoinment></ShowAppoinment>
                         </RequireAuth>
-                    }
-                >
+                    }>
                     <Route index element={<MyAppoinments></MyAppoinments>}></Route>
                     <Route path="/showappoinment/myreviews" element={<MyReview></MyReview>}></Route>
                     <Route path="/showappoinment/history" element={<MyHistory></MyHistory>}></Route>
@@ -55,11 +55,27 @@ const RouterConfig = () => {
                         element={
                             <RequireAdmin >
                                 <Users></Users>
-                            </RequireAdmin>}
-                    >
+                            </RequireAdmin>
+                        }>
+                    </Route>
+                    <Route
+                        path="/showappoinment/add-doctor"
+                        element={
+                            <RequireAdmin >
+                                <AddDoctor></AddDoctor>
+                            </RequireAdmin>
+                        }>
+                    </Route>
+                    <Route
+                        path="/showappoinment/manage-doctors"
+                        element={
+                            <RequireAdmin >
+                                <ManageDoctors></ManageDoctors>
+                            </RequireAdmin>
+                        }>
                     </Route>
                 </Route>
-                
+
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
             </Route>
